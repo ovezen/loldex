@@ -8,7 +8,7 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "League of Legends Info App",
+  title: "리그 오브 레전드 정보 앱",
   description:
     "Riot Games API를 활용한 리그 오브 레전드 챔피언, 아이템, 로테이션 정보 앱",
 };
