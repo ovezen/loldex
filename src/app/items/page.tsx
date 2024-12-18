@@ -1,9 +1,19 @@
 import ItemCards from "@/components/ItemCards";
 import { Item } from "@/types/Item";
 import { fetchItems, fetchVersion } from "@/utils/serverApi";
+import { Metadata } from "next";
 import React from "react";
 
-// 메타데이터 넣을 곳
+export const metadata: Metadata = {
+  title: "리그 오브 레전드 아이템 목록 정보",
+  description:
+    "Riot Games API를 활용한 리그 오브 레전드 아이템 목록 정보를 확인할 수 있습니다.",
+  openGraph: {
+    title: "리그 오브 레전드 아이템 목록 정보",
+    description:
+      "Riot Games API를 활용한 리그 오브 레전드 아이템 목록 정보를 확인할 수 있습니다.",
+  },
+};
 
 export default async function ItemsPage() {
   const version: string = await fetchVersion();

@@ -17,7 +17,7 @@ export async function GET() {
       {
         method: "GET",
         headers: {
-          "X-Riot_Token": apiKey,
+          "X-Riot-Token": apiKey,
         },
       }
     );
@@ -29,7 +29,7 @@ export async function GET() {
     const data: ChampionRotation[] = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error("데이터 패치 중 에러 발생", error);
+    console.error("데이터를 가져오던 중 에러 발생", error);
 
     return NextResponse.json(
       { error: "챔피언 정보를 가져오지 못했습니다." },

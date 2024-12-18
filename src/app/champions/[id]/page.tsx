@@ -39,7 +39,7 @@ export default async function ChampionDetailPage({ params }: DetailProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
-      {/* 배경 섹션 */}
+      {/* 챔피언 스플래시 아트 */}
       <div
         className="relative bg-cover bg-center h-[70vh] flex items-center text-white"
         style={{
@@ -60,7 +60,7 @@ export default async function ChampionDetailPage({ params }: DetailProps) {
         </div>
       </div>
 
-      {/* 콘텐츠 섹션 */}
+      {/* 챔피언 정보 */}
       <div className="relative z-20">
         <div className="bg-white dark:bg-gray-800 shadow-lg rounded-t-3xl p-8 -mt-16">
           {/* 스킬 정보 */}
