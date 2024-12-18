@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getChampionRotation } from "@/utils/riotApi";
 import ChampionCards from "@/components/ChampionCards";
 import Loading from "../loading";
+import { useEffect } from "react";
 
 type RotationProps = {
   allPlayers: Champion[];
@@ -12,13 +13,20 @@ type RotationProps = {
 };
 
 export default function RotationPage() {
-  const { data, isPending, error, refetch } = useQuery<RotationProps>({
+  const { data, isPending, error } = useQuery<RotationProps>({
     queryKey: ["championRotation"],
     queryFn: getChampionRotation,
     retry: false,
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 5,
   });
+
+  // 데이터가 있을 때 콘솔 출력
+  // useEffect(() => {
+  //   if (data) {
+  //     console.log("API Response Data:", data);
+  //   }
+  // }, [data]);
 
   if (isPending) {
     return <Loading />;
