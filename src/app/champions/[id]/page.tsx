@@ -3,8 +3,9 @@ import {
   getSpellImgUrl,
   SPLASH_IMG_URL,
 } from "@/constants/constants";
-import { ChampionSkill, ChampionSkin } from "@/types/Champion";
+import { ChampionDetail, ChampionSkill, ChampionSkin } from "@/types/Champion";
 import { fetchChampionDetail, fetchVersion } from "@/utils/serverApi";
+import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
 
@@ -13,6 +14,16 @@ type DetailProps = {
     id: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: DetailProps): Promise<Metadata> {
+  const champion: ChampionDetail = await fetchChampionDetail(params.id);
+  return {
+    title: `리그 오브 레전드: ${champion.name}`,
+    description: `${champion.lore}`,
+  };
+}
 
 export default async function ChampionDetailPage({ params }: DetailProps) {
   const version = await fetchVersion();
