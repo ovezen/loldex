@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Providers from "@/providers/RQProvider";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,25 +21,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav>
-          <div className="w-screen flex justify-center items-center py-2">
-            <ul className="hidden md:flex space-x-6">
-              <li>
-                <Link href={"/"}>홈</Link>
-              </li>
-              <li>
-                <Link href={"/champions"}>챔피언</Link>
-              </li>
-              <li>
-                <Link href={"/items"}>아이템</Link>
-              </li>
-              <li>
-                <Link href={"/rotation"}>로테이션</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <main>{children}</main>
+        <Providers>
+          <nav>
+            <div className="w-screen flex justify-center items-center py-2">
+              <ul className="hidden md:flex space-x-6">
+                <li>
+                  <Link href={"/"}>홈</Link>
+                </li>
+                <li>
+                  <Link href={"/champions"}>챔피언</Link>
+                </li>
+                <li>
+                  <Link href={"/items"}>아이템</Link>
+                </li>
+                <li>
+                  <Link href={"/rotation"}>로테이션</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );

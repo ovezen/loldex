@@ -1,7 +1,7 @@
 "use server";
 
 import { API_URL, getDataUrl } from "@/constants/constants";
-import { Champion, ChampionDetail } from "@/types/Champion";
+import { Champion, ChampionDetail, ChampionDetailResponse } from "@/types/Champion";
 import { Item } from "@/types/Item";
 
 // 최신 버전 정보
@@ -45,7 +45,7 @@ export async function fetchChampionDetail(id: string): Promise<ChampionDetail> {
     throw new Error(`챔피언 정보를 가져오지 못했습니다: ${response.status}`);
   }
 
-  const data = await response.json();
+  const data: ChampionDetailResponse = await response.json();
   const chmapionDetail = data.data[id];
   return chmapionDetail;
 }

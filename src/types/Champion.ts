@@ -52,3 +52,13 @@ export interface ChampionDetail extends Champion {
   skins: ChmapionSkin[];
   passive: ChampionPassive;
 }
+
+// 챔피언 상세 정보 API 응답 형태를 나타내는 타입
+export type ChampionDetailResponse = {
+  type: string;
+  format: string;
+  version: string;
+  data: {
+    [key: string]: ChampionDetail;
+  };
+};

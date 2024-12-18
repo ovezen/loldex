@@ -14,7 +14,7 @@ const ItemCards = ({ item, version }: ItemCardProps) => {
   return (
     <div className="border rounded-lg"
     >
-      <Image src={IMG_URL} alt={item.name} width={64} height={64} />
+      <Image src={IMG_URL} alt={item.name} width={100} height={100} />
       <p>{item.name}</p>
     </div>
   );
