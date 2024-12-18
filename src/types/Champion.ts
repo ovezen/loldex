@@ -38,7 +38,7 @@ export interface ChampionPassive {
 }
 
 // 챔피언 스킨 정보 타입
-export interface ChmapionSkin {
+export interface ChampionSkin {
   id: string;
   num: number;
   name: string;
@@ -49,7 +49,7 @@ export interface ChmapionSkin {
 export interface ChampionDetail extends Champion {
   lore: string;
   spells: ChampionSkill[];
-  skins: ChmapionSkin[];
+  skins: ChampionSkin[];
   passive: ChampionPassive;
 }
 

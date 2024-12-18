@@ -10,16 +10,12 @@ export default async function ItemsPage() {
   const items: Item[] = await fetchItems();
 
   return (
-    <>
-      <div>
-        <h2>아이템 목록</h2>
-      </div>
-
+    <div className="min-h-screen flex flex-col items-center bg-gray-100 dark:bg-gray-900 py-8">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {items.map((item: Item) => (
           <ItemCards key={item.id} item={item} version={version} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
