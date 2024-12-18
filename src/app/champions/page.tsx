@@ -16,6 +16,12 @@ export const metadata: Metadata = {
 };
 
 export default async function ChampionsPage() {
+
+  // error.tsx 에러 복구 확인
+  // if (Math.random() < 0.5) {
+  //   throw new Error("테스트: 50% 확률로 발생한 오류");
+  // }
+
   const championList: Champion[] = await fetchChampionList();
 
   return (
