@@ -1,8 +1,19 @@
 import ChampionCards from "@/components/ChampionCards";
 import { Champion } from "@/types/Champion";
 import { fetchChampionList } from "@/utils/serverApi";
+import { Metadata } from "next";
 
-// 메타데이터 넣을 곳
+export const metadata: Metadata = {
+  title: "리그 오브 레전드 챔피언 목록 정보",
+  description:
+    "Riot Games API를 활용한 리그 오브 레전드 챔피언 목록 정보를 확인할 수 있습니다.",
+  keywords: ["League of Legends", "LoL", "챔피언 정보"],
+  openGraph: {
+    title: "리그 오브 레전드 챔피언 목록 정보",
+    description:
+      "Riot Games API를 활용한 리그 오브 레전드 챔피언 목록 정보를 확인할 수 있습니다.",
+  },
+};
 
 export default async function ChampionsPage() {
   const championList: Champion[] = await fetchChampionList();
