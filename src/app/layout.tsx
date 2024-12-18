@@ -20,20 +20,22 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <nav>
-          <ul>
-            <li>
-              <Link href={"/"}>홈</Link>
-            </li>
-            <li>
-              <Link href={"/champions"}>챔피언</Link>
-            </li>
-            <li>
-              <Link href={"/items"}>아이템</Link>
-            </li>
-            <li>
-              <Link href={"/rotation"}>로테이션</Link>
-            </li>
-          </ul>
+          <div className="w-screen flex justify-center items-center py-2">
+            <ul className="hidden md:flex space-x-6">
+              <li>
+                <Link href={"/"}>홈</Link>
+              </li>
+              <li>
+                <Link href={"/champions"}>챔피언</Link>
+              </li>
+              <li>
+                <Link href={"/items"}>아이템</Link>
+              </li>
+              <li>
+                <Link href={"/rotation"}>로테이션</Link>
+              </li>
+            </ul>
+          </div>
         </nav>
         <main>{children}</main>
       </body>
