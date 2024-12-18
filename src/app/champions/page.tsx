@@ -3,7 +3,6 @@ import { Champion } from "@/types/Champion";
 import { fetchChampionList, fetchVersion } from "@/utils/serverApi";
 
 export default async function ChampionsPage() {
-  const version = await fetchVersion();
   const championList: Champion[] = await fetchChampionList();
 
   return (
@@ -13,11 +12,10 @@ export default async function ChampionsPage() {
       </div>
 
       <div>
-        {championList.map((champion) => (
+        {championList.map((champion: Champion) => (
           <ChampionCards
             key={champion.id}
             champion={champion}
-            version={version}
           />
         ))}
       </div>
