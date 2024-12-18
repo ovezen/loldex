@@ -7,9 +7,7 @@ export async function GET() {
   if (!apiKey) {
     return NextResponse.json(
       { error: "API KEY를 찾을 수 없습니다." },
-      {
-        status: 500,
-      }
+      { status: 500 }
     );
   }
 
@@ -31,7 +29,7 @@ export async function GET() {
     const data: ChampionRotation[] = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Failed to fetch", error);
+    console.error("데이터 패치 중 에러 발생", error);
 
     return NextResponse.json(
       { error: "챔피언 정보를 가져오지 못했습니다." },

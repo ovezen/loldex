@@ -1,12 +1,12 @@
 "use server";
 
-import { apiURL } from "@/constants/constants";
+import { API_URL, getDataUrl } from "@/constants/constants";
 import { Champion } from "@/types/Champion";
 import { Item } from "@/types/Item";
 
 // 최신 버전 정보
 export async function fetchVersion(): Promise<string> {
-  const response = await fetch(`${apiURL}/api/versions.json`, {
+  const response = await fetch(`${API_URL}/api/versions.json`, {
     method: "GET",
   });
 
@@ -21,14 +21,11 @@ export async function fetchVersion(): Promise<string> {
 // 챔피언 목록: ISR(revalidate: 86400)
 export async function fetchChampionList(): Promise<Champion[]> {
   const version = await fetchVersion();
-  const response = await fetch(
-    `${apiURL}/cdn/${version}/data/ko_KR/champion.json`,
-    {
-      next: {
-        revalidate: 86400,
-      },
-    }
-  );
+  const response = await fetch(`${getDataUrl(version)}/champion.json`, {
+    next: {
+      revalidate: 86400,
+    },
+  });
 
   if (!response.ok) {
     throw new Error(`챔피언 목록을 불러오지 못했습니다.: ${response.status}`);
@@ -42,10 +39,10 @@ export async function fetchChampionList(): Promise<Champion[]> {
 // 아이템 목록
 export async function fetchItems(): Promise<Item[]> {
   const version = await fetchVersion();
-  const response = await fetch(`${apiURL}/cdn/${version}/data/ko_KR/item.json`);
+  const response = await fetch(`${getDataUrl(version)}/item.json`);
 
   if (!response.ok) {
-    throw new Error(`아이템 목록을 불러오지 못했습니다.: ${response.status}`);
+    throw new Error(`아이템 정보를 가져오지 못했습니다.: ${response.status}`);
   }
 
   const data = await response.json();
