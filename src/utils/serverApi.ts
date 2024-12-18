@@ -18,7 +18,7 @@ export async function fetchVersion(): Promise<string> {
   return data[0];
 }
 
-// 챔피언 목록
+// 챔피언 목록: ISR(revalidate: 86400)
 export async function fetchChampionList(): Promise<Champion[]> {
   const version = await fetchVersion();
   const response = await fetch(
